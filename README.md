@@ -59,6 +59,31 @@ void map_floodfill(char *argv)
 
 ## Cosas a entender **antes** de empezar:
 ### Estructuras
+Para juegos con gráficos y mapas, o incluso para proyectos más complejos, es coveniente crear estructuras.
+
+> Las estructuras son un tipo de dato que **permite almacenar valores dentro de una misma variable**. Es una forma de agrupar datos bajo un mismo nombre, de forma que sea accesible desde todas las funciones del proyecto.
+
+**¿Cómo se define?**
+Tienen una estructura muy concreta, y debemos definirla en nuestra librería .h personalizada
+```
+typedef struct s_map
+{
+	char	**map;
+	int	x;
+	int	y;
+} t_map;
+```
+En este ejemplo, **struct s_map** es la palabra clave y el nombre de la estructura, que en la salida utilizaremos como **t_map**, un alias para no tener que estar llamando a struct s_map todo el tiempo. Suele ser aconsejable utilizar s_nombre en origen y t_nombre en salida para indicar que son estructuras.
+Dentro del t_map, encontramos distintas variables agrupadas que tienen que ver con (en este caso) el mapa:
+- Una matriz
+- Eje x
+- Eje y
+
+**¿Cómo accedemos a una variable dentro de la estructura?**
+En nuestro código, tendremos que usar como argumento t_map *mapa (o el nombre que le queramos poner a nuestra estructura t_map). Para acceder a la variable x, por ejemplo, dentro del código utilizaríamos:
+```
+mapa->x;
+```
 ### Matriz
 
 
