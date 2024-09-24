@@ -57,5 +57,8 @@ void map_floodfill(char *argv)
 }
 ```
 
+## Cosas a entender **antes** de empezar:
+### Estructuras
+### Matriz
 
 
