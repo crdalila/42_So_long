@@ -6,7 +6,7 @@
 /*   By: dalcabre <dalcabre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:49:08 by dalcabre          #+#    #+#             */
-/*   Updated: 2024/10/16 12:32:22 by dalcabre         ###   ########.fr       */
+/*   Updated: 2024/10/16 13:09:08 by dalcabre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		main(int argc, char **argv)
 	
 	if (argc != 2)
 		ft_error("Error!\nNot enough arguments");
-	ft_bzero(&game, sizeof(t_game)); //luego lo miramos
+	ft_bzero(&game, sizeof(t_game)); //inicializamos game a 0 antes de usarlo para evitar errores
 	map_is_ber(argv[1]);
 	is_map_ok(argv[1], &game);
 	ber_to_matrix(argv[1], &game);

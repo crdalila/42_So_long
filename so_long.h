@@ -6,7 +6,7 @@
 /*   By: dalcabre <dalcabre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 11:16:39 by dalcabre          #+#    #+#             */
-/*   Updated: 2024/09/27 12:14:14 by dalcabre         ###   ########.fr       */
+/*   Updated: 2024/10/16 13:12:36 by dalcabre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,17 @@ typedef struct s_map
     int     exit;
 }   t_map;
 
-/*typedef struct s_player
+typedef struct s_player
 {
+    int     x;
+    int     y;
+    int     coins;
+    bool    exit;
+    int     collect;
+    int     moves;
+}   t_player;
 
-} t_player;
-
-typedef struct s_images;
+/*typedef struct s_images;
 {
 
 } t_images;*/
@@ -47,8 +52,8 @@ typedef struct s_images;
 typedef struct s_game
 {
 	t_map		map;//mapa
-/*	t_player	player;//jugador
-	t_images	images;//graficos*/
+	t_player	player;//jugador
+//	t_images	images;//graficos
 }	t_game;
 
 
@@ -62,7 +67,8 @@ void    check_map_walls(t_game *game);
 void    check_map_content(t_game *game);
 
 //floodfill.c
-//void	map_floodfill(char *argv, t_game *game)
+void	map_floodfill(t_game *game, int x, int y);
+
 
 
 // so_long.c

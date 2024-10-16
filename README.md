@@ -87,3 +87,35 @@ mapa->x;
 ### Matriz
 
 
+
+## Floodfill:
+Para que nuestro mapa funcione, tiene que tener una ruta **viable**, es decir, el jugador tiene que poder ir desde su posición (P) hasta la salida (E) después de recoger todos los coleccionables (C). De esto se encarga el **Floodfill**.
+Estructura general de la función, con **pseudocódigo**
+```
+void map_floodfill(t_game *game, int x, int y)
+{
+	int	player_x, player_y;
+
+	// Encontrar la posición inicial del jugador P
+	find_player_position(game, &player_x, &player_y);
+
+	// Creamos una matriz de "visitado" del mismo tamaño que el mapa para marcar las celdas visitadas
+	char **visited = create_visited_matrix(game->map.y, game->map.x);
+
+	// Contamos los coleccionables (C) y la salida (E) que encontramos durante la búsqueda
+	int collectibles_found = 0;
+	int exit_found = 0;
+
+	// Realizamos la búsqueda a partir de la posición del jugador
+	flood_fill(player_y, player_x, game, visited, &collectibles_found, &exit_found);
+
+	// Si encontramos la salida y todos los coleccionables, el mapa es válido
+	if (exit_found == 1 && collectibles_found == game->map.coin)
+		write(1, "Map is playable!\n", 17);
+	else
+		ft_error("Error!\nNo valid path in the map");
+
+	// Liberar la matriz visitada
+	free_visited_matrix(visited, game->map.y);
+}
+```
