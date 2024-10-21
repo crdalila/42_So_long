@@ -18,6 +18,20 @@ void	ft_error(char *str)
 	exit(1); //salida de error
 }
 
+void	ft_free(t_game *game) //lo miramos luego
+{
+	int	y;
+
+	y = 0;
+	while (game->map.map[y])
+	{
+		free(game->map.map[y]);
+		y++;
+	}
+	free(game->map.map);
+	game->map.map = NULL;
+}
+
 int		main(int argc, char **argv)
 {
 	t_game game;
@@ -25,12 +39,15 @@ int		main(int argc, char **argv)
 	
 	if (argc != 2)
 		ft_error("Error!\nNot enough arguments");
-	ft_bzero(&game, sizeof(t_game)); //inicializamos game a 0 antes de usarlo para evitar errores
+	ft_bzero(&game, sizeof(t_game)); //inicializamos t_game a 0 antes de usarlo para evitar errores
 	map_is_ber(argv[1]);
 	is_map_ok(argv[1], &game);
 	ber_to_matrix(argv[1], &game);
 	check_map_walls(&game);
 	check_map_content(&game);
+	where_is_player(&game);
+	map_floodfill(&game, game.player.y, game.player.x);
+	map_error(&game);
 	write(1, "Successful map\n", 15);
 	return (0);
 }

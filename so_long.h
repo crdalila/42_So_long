@@ -67,12 +67,13 @@ void    check_map_walls(t_game *game);
 void    check_map_content(t_game *game);
 
 //floodfill.c
+void	where_is_player(t_game *game);
 void	map_floodfill(t_game *game, int x, int y);
-
-
+void	map_error(t_game *game);
 
 // so_long.c
 void	ft_error(char *str);
+void	ft_free(t_game *game);
 int     main(int argc, char **argv);
 
 
