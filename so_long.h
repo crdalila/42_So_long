@@ -6,7 +6,7 @@
 /*   By: dalcabre <dalcabre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 11:16:39 by dalcabre          #+#    #+#             */
-/*   Updated: 2024/10/16 13:12:36 by dalcabre         ###   ########.fr       */
+/*   Updated: 2024/10/30 12:11:25 by dalcabre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "libft/libft.h"
 # include "printf/ft_printf.h"
 # include "libft/get_next_line.h"
+# include "mlx/mlx.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -51,7 +52,9 @@ typedef struct s_player
 
 typedef struct s_game
 {
-	t_map		map;//mapa
+	void        *mlx;
+    void        *mlx_window;
+    t_map		map;//mapa
 	t_player	player;//jugador
 //	t_images	images;//graficos
 }	t_game;

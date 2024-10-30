@@ -6,7 +6,7 @@
 /*   By: dalcabre <dalcabre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:49:08 by dalcabre          #+#    #+#             */
-/*   Updated: 2024/10/16 13:09:08 by dalcabre         ###   ########.fr       */
+/*   Updated: 2024/10/30 12:16:47 by dalcabre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ int		main(int argc, char **argv)
 	where_is_player(&game);
 	map_floodfill(&game, game.player.y, game.player.x);
 	map_error(&game);
-	write(1, "Successful map\n", 15);
+	is_map_ok(argv[1], &game);//para abrir el mapa de nuevo después de comprobar si se puede jugar
+	game.mlx = mlx_init();//funcion predeterminada para inicializar el mlx
+	game.mlx_window = mlx_new_window(game.mlx, game.map.x * 128,
+			game.map.y * 128, "title of the game");//para abrir una ventana, función predeterminada
+	hooks(&game);
+	//images(&game);
+	mlx_loop(game.mlx);//para seguir jugando
 	return (0);
 }
